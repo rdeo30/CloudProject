@@ -3,6 +3,7 @@ from datetime import datetime
 
 import click
 
+
 from flask import current_app, g
 
 def get_db():
@@ -25,3 +26,4 @@ def init_db():
     with current_app.open_resource('schema.sql') as f:
         db.executescript(f.read().decode('utf8'))
 
+print("fuc kdidego")
