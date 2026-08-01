@@ -17,3 +17,10 @@ instance/
 # IDE settings
 .vscode/
 .idea/
+
+.coverage
+htmlcov/
+
+dist/
+build/
+*.egg-info/
