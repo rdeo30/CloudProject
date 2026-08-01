@@ -26,4 +26,13 @@ def init_db():
     with current_app.open_resource('schema.sql') as f:
         db.executescript(f.read().decode('utf8'))
 
-print("fuc kdidego")
+@click.command('init-db')
+def init_db_command():
+    init_db()
+    click.echo('Initialized the database.')
+
+sqlite3.register_converter("timestamp", lambda v : datetime.fromisoformat(v.decode()))
+
+def init_app(app):
+    app.teardown_appcontext(close_db) # tells Flask to call that function when cleaning up after returning the response.
+    app.cli.add_command(init_db_command) #adds a new command that can be called with the flask command.

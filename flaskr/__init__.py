@@ -1,5 +1,7 @@
 import os
 from flask import Flask
+from . import db
+from . import auth
 
 #contain the application factory, and it tells Python that the flaskr directory should be treated as a package.
 
@@ -20,5 +22,8 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return "Hello World!"
+
+    db.init_app(app)
+    app.register_blueprint(auth.bp) #auth blueprint will have views to register new users and to log in and log out.
 
     return app
