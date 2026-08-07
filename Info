@@ -1,0 +1,12 @@
+
+FOR dev testing of app:
+1. you should still be in the top-level flask-tutorial directory, not the flaskr package.
+2. $ flask --app flaskr run --debug
+
+
+
+{% block title %} will change the title displayed in the browser’s tab and window title. (displays the website name, usually stays the same for pages shared on same website (displays flaskr))
+
+{% block header %} is similar to title but will change the title displayed on the page. (unqiue to that specific page)
+
+{% block content %} is where the content of each page goes, such as the login form or a blog post.

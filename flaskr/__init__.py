@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from . import db
 from . import auth
+from . import blog
 
 #contain the application factory, and it tells Python that the flaskr directory should be treated as a package.
 
@@ -25,5 +26,7 @@ def create_app(test_config=None):
 
     db.init_app(app)
     app.register_blueprint(auth.bp) #auth blueprint will have views to register new users and to log in and log out.
+    app.register_blueprint(blog.bp)
+    app.add_url_rule('/', endpoint='index') #associates the endpoint name 'index' with the / url so that url_for('index') or url_for('blog.index') will both work
 
     return app
